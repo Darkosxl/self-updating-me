@@ -194,12 +194,12 @@
 
                 if (data.latest_linkedin_post && data.latest_linkedin_post.preview && data.latest_linkedin_post.url) {
                     activityItems.push(
-                        `posted <a href="${data.latest_linkedin_post.url}" target="_blank" style="color: #4B0082; text-decoration: none;"><span class="highlight">"${data.latest_linkedin_post.preview}"</span></a> on linkedin`
+                        `Posted <a href="${data.latest_linkedin_post.url}" target="_blank" style="color: #4B0082; text-decoration: none;"><span class="highlight">"${data.latest_linkedin_post.preview}"</span></a> on linkedin`
                     );
                 } else {
                     // Fallback to placeholder with meaningful text
                     activityItems.push(
-                        `posted <a href="${defaultLinkedInUrl}" target="_blank" style="color: #4B0082; text-decoration: none;"><span class="highlight">"${placeholderText}"</span></a> on linkedin`
+                        `Posted <a href="${defaultLinkedInUrl}" target="_blank" style="color: #4B0082; text-decoration: none;"><span class="highlight">"${placeholderText}"</span></a> on linkedin`
                     );
                 }
 
