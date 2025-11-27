@@ -36,12 +36,12 @@ logger = logging.getLogger(__name__)
 
 
 def load_env():
-    """Load environment variables from .env file"""
+    """Load environment variables from .env file or system environment"""
     env_file = SCRIPT_DIR / ".env"
-    if not env_file.exists():
-        logger.error(".env file not found")
-        raise FileNotFoundError(".env file not found")
 
+    # Try to load from .env file (for local development)
+    # If file doesn't exist, load_dotenv will skip gracefully
+    # and use system environment variables (for production/Dokploy)
     load_dotenv(env_file)
     logger.info("Environment variables loaded")
 
