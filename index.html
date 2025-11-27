@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/altmann-grotesk');
+        @import url('https://fonts.cdnfonts.com/css/sauna-mono-pro');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Altmann Grotesk', 'Helvetica Neue', sans-serif;
+            font-weight: 400;
+            background-color: #ffffff;
+            color: #000000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 12px;
+            font-weight: 400;
+            color: #000000;
+        }
+
+        .subtitle {
+            font-size: 1.25em;
+            margin-bottom: 10px;
+            font-weight: 400;
+            color: #000000;
+        }
+
+        .intro {
+            font-size: 1em;
+            margin-bottom: 25px;
+            color: #000000;
+        }
+
+        .activity-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .activity-list li {
+            margin-bottom: 12px;
+            padding-left: 40px;
+            position: relative;
+            color: #000000;
+            font-family: 'Sauna Mono Pro', 'Courier New', monospace;
+        }
+
+        .activity-list li:before {
+            content: "~ ❯";
+            position: absolute;
+            left: 0;
+            color: #999;
+        }
+
+        .activity-list .highlight {
+            color: #4B0082;
+            font-weight: 500;
+        }
+
+        .project-item {
+            margin-bottom: 12px;
+            padding-left: 40px;
+            position: relative;
+            font-family: 'Sauna Mono Pro', 'Courier New', monospace;
+        }
+
+        .project-item:before {
+            content: "~ ❯";
+            position: absolute;
+            left: 0;
+            color: #999;
+        }
+
+        .project-name {
+            color: #4B0082;
+            font-weight: 500;
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background-color: #4B0082;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 20px;
+        }
+
+        .btn:hover {
+            background-color: #6a0dad;
+            transform: translateY(-2px);
+        }
+
+        .last-updated {
+            margin-top: 60px;
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        .loading {
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <h1 id="greeting">Hi, I'm [Name].</h1>
+            <div class="subtitle" id="title">Loading...</div>
+            <div class="intro" id="intro">Recently—</div>
+            <ul class="activity-list" id="activity">
+                <li class="loading">Loading LinkedIn activity...</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="subtitle">Recent projects</div>
+            <div id="projects" class="loading">Loading projects...</div>
+        </div>
+
+        <div class="section">
+            <div class="subtitle">Automations</div>
+            <div>Building n8n-compatible automation tools and workflows.</div>
+        </div>
+
+        <div class="buttons" id="contact-buttons">
+            <a href="#" id="github-link" class="btn" target="_blank" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="#" id="linkedin-link" class="btn" target="_blank" title="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="#" id="email-link" class="btn" title="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
+            </a>
+        </div>
+
+        <div class="last-updated" id="last-updated"></div>
+    </div>
+
+    <script>
+        // Load data from data.json
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                // Personal info
+                const name = data.name || 'Your Name';
+                document.getElementById('greeting').textContent = `Hi, I'm ${name}.`;
+                document.getElementById('title').textContent = data.title || 'Your Title';
+
+                // LinkedIn posts as activity bullets
+                const activityContainer = document.getElementById('activity');
+                if (data.linkedin_posts && data.linkedin_posts.length > 0) {
+                    activityContainer.innerHTML = data.linkedin_posts.map(post => {
+                        const summary = post.summary || post.content;
+                        // Wrap keywords in spans for highlighting
+                        const highlighted = summary.replace(
+                            /"([^"]+)"/g,
+                            '<span class="highlight">"$1"</span>'
+                        );
+                        return `<li>${highlighted}</li>`;
+                    }).join('');
+                } else {
+                    activityContainer.innerHTML = '<li class="loading">No recent activity</li>';
+                }
+
+                // Projects with bullets
+                const projectsContainer = document.getElementById('projects');
+                if (data.projects && data.projects.length > 0) {
+                    projectsContainer.innerHTML = data.projects.map(project => `
+                        <div class="project-item">
+                            <span class="project-name">${project.name}</span> - ${project.description || 'Recent updates'}
+                        </div>
+                    `).join('');
+                } else {
+                    projectsContainer.innerHTML = '<div class="loading">No recent projects</div>';
+                }
+
+                // Contact
+                if (data.contact) {
+                    document.getElementById('email-link').href = `mailto:${data.contact.email}`;
+                    document.getElementById('github-link').href = `https://github.com/${data.contact.github}`;
+                    document.getElementById('linkedin-link').href = data.contact.linkedin;
+                }
+
+                // Last updated
+                if (data.last_updated) {
+                    document.getElementById('last-updated').textContent =
+                        `Last updated: ${new Date(data.last_updated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`;
+                }
+            })
+            .catch(error => {
+                console.error('Error loading data:', error);
+                document.getElementById('greeting').textContent = 'Hi, I\'m [Name].';
+                document.getElementById('title').textContent = 'Your Title';
+                document.getElementById('activity').innerHTML = '<li class="loading">Unable to load activity</li>';
+                document.getElementById('projects').innerHTML = '<div class="loading">Unable to load projects</div>';
+            });
+    </script>
+</body>
+</html>
