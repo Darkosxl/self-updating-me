@@ -148,22 +148,11 @@
 <body>
     <div class="container">
         <div class="section">
-            <h1 id="greeting">Hi, I'm [Name].</h1>
-            <div class="subtitle" id="title">Loading...</div>
-            <div class="intro" id="intro">Recently—</div>
+            <h1 id="greeting">Hey, I'm Cem B.</h1>
+            <div class="subtitle" id="title">A Developer who:</div>
             <ul class="activity-list" id="activity">
-                <li class="loading">Loading LinkedIn activity...</li>
+                <li class="loading">Loading activity...</li>
             </ul>
-        </div>
-
-        <div class="section">
-            <div class="subtitle">Recent projects</div>
-            <div id="projects" class="loading">Loading projects...</div>
-        </div>
-
-        <div class="section">
-            <div class="subtitle">Automations</div>
-            <div>Building n8n-compatible automation tools and workflows.</div>
         </div>
 
         <div class="buttons" id="contact-buttons">
@@ -186,38 +175,56 @@
         fetch('data.json')
             .then(response => response.json())
             .then(data => {
-                // Personal info
-                const name = data.name || 'Your Name';
-                document.getElementById('greeting').textContent = `Hi, I'm ${name}.`;
-                document.getElementById('title').textContent = data.title || 'Your Title';
-
-                // LinkedIn posts as activity bullets
+                // Build activity list
                 const activityContainer = document.getElementById('activity');
-                if (data.linkedin_posts && data.linkedin_posts.length > 0) {
-                    activityContainer.innerHTML = data.linkedin_posts.map(post => {
-                        const summary = post.summary || post.content;
-                        // Wrap keywords in spans for highlighting
-                        const highlighted = summary.replace(
-                            /"([^"]+)"/g,
-                            '<span class="highlight">"$1"</span>'
-                        );
-                        return `<li>${highlighted}</li>`;
-                    }).join('');
+                const activityItems = [];
+
+                // YouTube activity
+                if (data.youtube_videos && data.youtube_videos.length > 0) {
+                    const latestVideo = data.youtube_videos[0];
+                    activityItems.push(
+                        `Created content on youtube <a href="https://youtube.com/watch?v=${latestVideo.video_id}" target="_blank" style="color: #4B0082; text-decoration: none;"><span class="highlight">${latestVideo.title}</span></a>`
+                    );
+                }
+
+                // LinkedIn activity
+                // Use placeholder post until API has real data
+                const defaultLinkedInUrl = 'https://www.linkedin.com/feed/update/urn:li:activity:7393985021189042194/';
+                const placeholderText = "Bargain offer. 4.7x ARPU. Increased...";
+
+                if (data.latest_linkedin_post && data.latest_linkedin_post.preview && data.latest_linkedin_post.url) {
+                    activityItems.push(
+                        `posted <a href="${data.latest_linkedin_post.url}" target="_blank" style="color: #4B0082; text-decoration: none;"><span class="highlight">"${data.latest_linkedin_post.preview}"</span></a> on linkedin`
+                    );
+                } else {
+                    // Fallback to placeholder with meaningful text
+                    activityItems.push(
+                        `posted <a href="${defaultLinkedInUrl}" target="_blank" style="color: #4B0082; text-decoration: none;"><span class="highlight">"${placeholderText}"</span></a> on linkedin`
+                    );
+                }
+
+                // GitHub activity
+                if (data.github_activity && data.github_activity.repo) {
+                    const repo = data.github_activity.repo;
+                    const repoName = repo.split('/')[1] || repo; // Extract repo name from "owner/repo"
+                    activityItems.push(
+                        `Developed <a href="https://github.com/${repo}" target="_blank" style="color: #4B0082; text-decoration: none;"><span class="highlight">${repoName}</span></a>`
+                    );
+                }
+
+                // Render activity items or show placeholder
+                if (activityItems.length > 0) {
+                    activityContainer.innerHTML = activityItems.map(item => `<li>${item}</li>`).join('');
                 } else {
                     activityContainer.innerHTML = '<li class="loading">No recent activity</li>';
                 }
 
-                // Projects with bullets
-                const projectsContainer = document.getElementById('projects');
-                if (data.projects && data.projects.length > 0) {
-                    projectsContainer.innerHTML = data.projects.map(project => `
-                        <div class="project-item">
-                            <span class="project-name">${project.name}</span> - ${project.description || 'Recent updates'}
-                        </div>
-                    `).join('');
-                } else {
-                    projectsContainer.innerHTML = '<div class="loading">No recent projects</div>';
-                }
+                // I'm currently ninja mode in my startup w/ Onur
+                const ninjaMode = document.createElement('div');
+                ninjaMode.style.marginTop = '40px';
+                ninjaMode.style.fontSize = '1em';
+                ninjaMode.innerHTML = "I'm currently <span style='color: #4B0082; font-weight: 500;'>ninja mode</span> in my startup w/ <a href='https://www.linkedin.com/in/onur--celik/' target='_blank' style='color: #4B0082; text-decoration: none; font-weight: 500;'>Onur</a>";
+                document.querySelector('.section').appendChild(ninjaMode);
 
                 // Contact
                 if (data.contact) {
@@ -234,10 +241,7 @@
             })
             .catch(error => {
                 console.error('Error loading data:', error);
-                document.getElementById('greeting').textContent = 'Hi, I\'m [Name].';
-                document.getElementById('title').textContent = 'Your Title';
                 document.getElementById('activity').innerHTML = '<li class="loading">Unable to load activity</li>';
-                document.getElementById('projects').innerHTML = '<div class="loading">Unable to load projects</div>';
             });
     </script>
 </body>
