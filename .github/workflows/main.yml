@@ -1,0 +1,16 @@
+name: Daily Redeploy
+
+on:
+  schedule:
+    # This cron expression means "At 00:00 (Midnight) every day"
+    - cron: '0 0 * * *'
+  # Allows you to run this manually from the Actions tab for testing
+  workflow_dispatch:
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Webhook
+        # Replaces the URL below with the one from your dashboard
+        run: curl -X POST "http://49.13.224.20:3000/api/deploy/mVds_jODy4Cf0L67ZYO-a"
