@@ -1,0 +1,200 @@
+{
+  "paging": {
+    "start": 0,
+    "count": 50,
+    "links": [],
+    "total": 0
+  },
+  "elements": [
+    {
+      "owner": "urn:li:person:TbRi4_6WZ7",
+      "resourceId": "7399148231051481089",
+      "method": "ACTION",
+      "activity": {
+        "invitationV2": {
+          "inviter": "urn:li:person:AMRq-D7XVs",
+          "trackingId": " \u0004\u00b4\u00fe\u00de\bJH\u00bf\u0001[g\u00ad\u00f0h\u00d3",
+          "invitee": "urn:li:person:TbRi4_6WZ7"
+        }
+      },
+      "configVersion": 8,
+      "parentSiblingActivities": [],
+      "methodName": "verifyAndCreate",
+      "resourceName": "invitations",
+      "resourceUri": "invitationsV2",
+      "actor": "urn:li:person:AMRq-D7XVs",
+      "activityId": "607f8abb-2afe-458b-b7f3-95b74229e63b",
+      "processedAt": 1764094422476,
+      "activityStatus": "SUCCESS",
+      "capturedAt": 1764094408085,
+      "siblingActivities": [],
+      "id": 2651060529
+    },
+    {
+      "owner": "urn:li:person:TbRi4_6WZ7",
+      "resourceId": "7392482914346733568",
+      "method": "ACTION",
+      "activity": {
+        "inviteActionData": [
+          {
+            "validationToken": "yZZ2wrde",
+            "invitationId": "urn:li:invitation:7392482914346733568"
+          }
+        ],
+        "invitee": "urn:li:person:TbRi4_6WZ7",
+        "inviteeActionType": "ACCEPT"
+      },
+      "configVersion": 11,
+      "parentSiblingActivities": [],
+      "methodName": "inviteeClosingInvitation",
+      "resourceName": "invitations",
+      "resourceUri": "invitationsV2",
+      "actor": "urn:li:person:TbRi4_6WZ7",
+      "activityId": "6ebf8d0a-f8c7-4d89-89f5-bec4cee2bbc3",
+      "processedAt": 1764112711163,
+      "activityStatus": "SUCCESS",
+      "capturedAt": 1764112710233,
+      "siblingActivities": [],
+      "id": 2651493385
+    },
+    {
+      "owner": "urn:li:person:TbRi4_6WZ7",
+      "resourceId": "7399148231051481089",
+      "method": "ACTION",
+      "activity": {
+        "inviteActionData": [
+          {
+            "validationToken": "kI9XKShk",
+            "invitationId": "urn:li:invitation:7399148231051481089"
+          }
+        ],
+        "invitee": "urn:li:person:TbRi4_6WZ7",
+        "inviteeActionType": "ACCEPT"
+      },
+      "configVersion": 11,
+      "parentSiblingActivities": [],
+      "methodName": "inviteeClosingInvitation",
+      "resourceName": "invitations",
+      "resourceUri": "invitationsV2",
+      "actor": "urn:li:person:TbRi4_6WZ7",
+      "activityId": "a0022391-8510-4b7b-9883-452070d0493b",
+      "processedAt": 1764112739371,
+      "activityStatus": "SUCCESS",
+      "capturedAt": 1764112709283,
+      "siblingActivities": [],
+      "id": 2651493393
+    },
+    {
+      "owner": "urn:li:person:TbRi4_6WZ7",
+      "resourceId": "2-MTc2NDE2MzA0MTk1NWIyMzExMi0xMDAmYjEzYzQ2NWEtOGFhMC00M2IwLThiODAtODEwZjBlOTBlYWU0XzEwMA==",
+      "method": "CREATE",
+      "activity": {
+        "owner": "urn:li:person:7VI0RPcMT8",
+        "attachments": [],
+        "clientExperience": {
+          "clientGeneratedToken": "dfa3795a-281b-495f-b1f6-afd3a50883b6"
+        },
+        "author": "urn:li:person:7VI0RPcMT8",
+        "thread": "urn:li:messagingThread:2-YjEzYzQ2NWEtOGFhMC00M2IwLThiODAtODEwZjBlOTBlYWU0XzEwMA==",
+        "contentClassification": {
+          "classification": "SAFE"
+        },
+        "content": {
+          "format": "TEXT",
+          "fallback": "Hi Berke, sorry for not sending it earlier. Can you share your availability in the coming days?",
+          "formatVersion": 1
+        },
+        "deliveredAt": 1764163041955,
+        "actor": "urn:li:messagingActor:urn:li:person:7VI0RPcMT8",
+        "createdAt": 1764163041955,
+        "mailbox": "urn:li:messagingMailbox:urn:li:person:7VI0RPcMT8",
+        "messageContexts": [],
+        "id": "2-MTc2NDE2MzA0MTk1NWIyMzExMi0xMDAmYjEzYzQ2NWEtOGFhMC00M2IwLThiODAtODEwZjBlOTBlYWU0XzEwMA==",
+        "$URN": "urn:li:messagingMessage:2-MTc2NDE2MzA0MTk1NWIyMzExMi0xMDAmYjEzYzQ2NWEtOGFhMC00M2IwLThiODAtODEwZjBlOTBlYWU0XzEwMA=="
+      },
+      "configVersion": 19,
+      "parentSiblingActivities": [],
+      "resourceName": "messages",
+      "resourceUri": "/messages/2-MTc2NDE2MzA0MTk1NWIyMzExMi0xMDAmYjEzYzQ2NWEtOGFhMC00M2IwLThiODAtODEwZjBlOTBlYWU0XzEwMA==",
+      "actor": "urn:li:person:7VI0RPcMT8",
+      "activityId": "54dc47f3-6f70-49f5-8d3a-0220094c80bf",
+      "processedAt": 1764163042347,
+      "activityStatus": "SUCCESS",
+      "capturedAt": 1764163042151,
+      "siblingActivities": [],
+      "id": 2652535393
+    },
+    {
+      "owner": "urn:li:person:TbRi4_6WZ7",
+      "resourceId": "2-MTc2NDE2MzA0MTk1NWIyMzExMi0xMDAmYjEzYzQ2NWEtOGFhMC00M2IwLThiODAtODEwZjBlOTBlYWU0XzEwMA==",
+      "method": "UPDATE",
+      "activity": {
+        "actor": "urn:li:messagingActor:urn:li:person:7VI0RPcMT8",
+        "createdAt": 1764163056416,
+        "attachments": [],
+        "author": "urn:li:person:7VI0RPcMT8",
+        "messageContexts": [],
+        "thread": "urn:li:messagingThread:2-YjEzYzQ2NWEtOGFhMC00M2IwLThiODAtODEwZjBlOTBlYWU0XzEwMA==",
+        "message": "urn:li:messagingMessage:2-MTc2NDE2MzA0MTk1NWIyMzExMi0xMDAmYjEzYzQ2NWEtOGFhMC00M2IwLThiODAtODEwZjBlOTBlYWU0XzEwMA==",
+        "version": 1059973314,
+        "content": {
+          "format": "TEXT",
+          "fallback": "Hi Cem, sorry for not sending it earlier. Can you share your availability in the coming days?",
+          "formatVersion": 1
+        },
+        "contentCertificationToken": "{\"spamRestriction\":{\"classifications\":[],\"contentQualityClassifications\":[],\"systemName\":\"MACHINE_SYNC\",\"lowQuality\":false,\"contentClassificationTrackingId\":\"25927497E643A883864541506556E81E\",\"contentRelevanceClassifications\":[],\"spam\":false},\"originCountryCode\":\"hu\",\"modifiedAt\":1764163056528}"
+      },
+      "configVersion": 4,
+      "parentSiblingActivities": [],
+      "resourceName": "messages",
+      "resourceUri": "/messages/2-MTc2NDE2MzA0MTk1NWIyMzExMi0xMDAmYjEzYzQ2NWEtOGFhMC00M2IwLThiODAtODEwZjBlOTBlYWU0XzEwMA==",
+      "actor": "urn:li:person:7VI0RPcMT8",
+      "activityId": "144adb7d-0502-4a05-b8b5-954af7b5df56",
+      "processedAt": 1764163056739,
+      "activityStatus": "SUCCESS",
+      "capturedAt": 1764163056549,
+      "siblingActivities": [],
+      "id": 2652535401
+    },
+    {
+      "owner": "urn:li:person:TbRi4_6WZ7",
+      "resourceId": "2-MTc2NDE3OTQxMDExNGI4NDA1My0xMDAmODI2ZGI2NzktMmZjMS00NjEyLTg4YTYtNmRlY2Y0YzM5MWQ4XzEwMA==",
+      "method": "CREATE",
+      "activity": {
+        "owner": "urn:li:person:AMRq-D7XVs",
+        "attachments": [],
+        "clientExperience": {
+          "clientGeneratedToken": "a0dca9f2-a7cd-4ab4-ae9e-1f9d1b17d4a3"
+        },
+        "author": "urn:li:person:AMRq-D7XVs",
+        "thread": "urn:li:messagingThread:2-ODI2ZGI2NzktMmZjMS00NjEyLTg4YTYtNmRlY2Y0YzM5MWQ4XzEwMA==",
+        "contentClassification": {
+          "classification": "SAFE"
+        },
+        "content": {
+          "format": "TEXT",
+          "fallback": "Hi Cem, congrats on starting your venture! I see you're building a new startup, I thought you'd appreciate this. Most early-stage teams skip structured discovery and end up with unclear scope, rework, and architecture that doesn't scale. Timelines stretch, and features get rebuilt mid-dev. Our Discovery Phase locks down scope, validates architecture, and delivers investor-ready documentation. Worth a quick call?",
+          "formatVersion": 1
+        },
+        "deliveredAt": 1764179410114,
+        "actor": "urn:li:messagingActor:urn:li:person:AMRq-D7XVs",
+        "createdAt": 1764179410114,
+        "mailbox": "urn:li:messagingMailbox:urn:li:person:AMRq-D7XVs",
+        "messageContexts": [],
+        "id": "2-MTc2NDE3OTQxMDExNGI4NDA1My0xMDAmODI2ZGI2NzktMmZjMS00NjEyLTg4YTYtNmRlY2Y0YzM5MWQ4XzEwMA==",
+        "$URN": "urn:li:messagingMessage:2-MTc2NDE3OTQxMDExNGI4NDA1My0xMDAmODI2ZGI2NzktMmZjMS00NjEyLTg4YTYtNmRlY2Y0YzM5MWQ4XzEwMA=="
+      },
+      "configVersion": 19,
+      "parentSiblingActivities": [],
+      "resourceName": "messages",
+      "resourceUri": "/messages/2-MTc2NDE3OTQxMDExNGI4NDA1My0xMDAmODI2ZGI2NzktMmZjMS00NjEyLTg4YTYtNmRlY2Y0YzM5MWQ4XzEwMA==",
+      "actor": "urn:li:person:AMRq-D7XVs",
+      "activityId": "6fc3b0bf-a70e-41d5-9c9e-e4e2cb04e2a2",
+      "processedAt": 1764179410569,
+      "activityStatus": "SUCCESS",
+      "capturedAt": 1764179410355,
+      "siblingActivities": [],
+      "id": 2653129929
+    }
+  ]
+}
