@@ -181,8 +181,7 @@ def parse_linkedin_posts(linkedin_data):
 
 def fetch_github_activity():
     """
-    Fetch GitHub activity by getting the most recently pushed repository
-    This is more reliable than the Events API which has a 30-day limit
+    Fetch GitHub activity by getting the 3 most recently pushed repositories
     """
     token = os.getenv("github_pat")
     username = os.getenv("PORTFOLIO_GITHUB")
@@ -198,7 +197,7 @@ def fetch_github_activity():
     params = {
         "sort": "pushed",
         "direction": "desc",
-        "per_page": 5  # Get top 5 most recently pushed repos
+        "per_page": 3  # Get top 3 most recently pushed repos
     }
 
     # Public repos don't require auth
@@ -213,39 +212,18 @@ def fetch_github_activity():
         repos = response.json()
 
         if repos and len(repos) > 0:
-            # Get the most recently pushed repo
-            latest_repo = repos[0]
-            repo_full_name = latest_repo.get("full_name", "")
-            repo_name = latest_repo.get("name", "")
-            pushed_at = latest_repo.get("pushed_at", "")
-
-            logger.info(f"Found latest GitHub activity: {repo_full_name} (pushed at {pushed_at})")
-
-            # Optionally, fetch latest commits from this repo
-            commits_url = f"https://api.github.com/repos/{repo_full_name}/commits"
-            commits_params = {"per_page": 3}
-
-            try:
-                commits_response = requests.get(commits_url, headers=headers, params=commits_params, timeout=30)
-                commits_response.raise_for_status()
-                commits_data = commits_response.json()
-
-                latest_commits = [
-                    {
-                        "sha": commit.get("sha", "")[:7],
-                        "message": commit.get("commit", {}).get("message", "").split('\n')[0]  # First line only
-                    }
-                    for commit in commits_data[:3]
-                ]
-            except:
-                latest_commits = []
-
-            return {
-                "repo": repo_full_name,
-                "repo_name": repo_name,
-                "commits": latest_commits,
-                "pushed_at": pushed_at
-            }
+            # Get top 3 repos
+            latest_repos = []
+            for repo in repos[:3]:
+                latest_repos.append({
+                    "name": repo.get("name", ""),
+                    "full_name": repo.get("full_name", ""),
+                    "url": repo.get("html_url", ""),
+                    "pushed_at": repo.get("pushed_at", "")
+                })
+            
+            logger.info(f"Found {len(latest_repos)} GitHub repos: {[r['name'] for r in latest_repos]}")
+            return latest_repos
         else:
             logger.warning("No repositories found for user")
             return None
@@ -336,28 +314,12 @@ def fetch_youtube_latest_videos(max_results=5):
         return []
 
 
-def generate_data_json(posts, github_activity, youtube_videos):
+def generate_data_json(github_repos, youtube_videos):
     """Generate the data.json file for the website"""
-    # Get latest LinkedIn post info
-    latest_linkedin_post = None
-    if posts and len(posts) > 0:
-        # Extract first few words from the latest post
-        content = posts[0].get("content", "")
-        words = content.split()[:5]  # First 5 words
-        preview = " ".join(words) + ("..." if len(words) >= 5 else "")
-
-        latest_linkedin_post = {
-            "preview": preview,
-            "url": posts[0].get("url", ""),  # You'll need to add this in parse_linkedin_posts
-            "full_content": content
-        }
-
     data = {
         "name": os.getenv("PORTFOLIO_NAME", "Your Name"),
         "title": os.getenv("PORTFOLIO_TITLE", "Your Title"),
-        "linkedin_posts": posts,
-        "latest_linkedin_post": latest_linkedin_post,
-        "github_activity": github_activity,
+        "github_repos": github_repos or [],
         "youtube_videos": youtube_videos,
         "contact": {
             "email": os.getenv("PORTFOLIO_EMAIL", "your.email@example.com"),
@@ -383,20 +345,14 @@ def main():
         # Load environment variables
         load_env()
 
-        # Fetch LinkedIn data
-        linkedin_data = fetch_linkedin_data()
-
-        # Parse LinkedIn posts
-        posts = parse_linkedin_posts(linkedin_data)
-
-        # Fetch GitHub activity
-        github_activity = fetch_github_activity()
+        # Fetch GitHub repos (last 3)
+        github_repos = fetch_github_activity()
 
         # Fetch YouTube videos
         youtube_videos = fetch_youtube_latest_videos(max_results=5)
 
         # Generate data.json
-        generate_data_json(posts, github_activity, youtube_videos)
+        generate_data_json(github_repos, youtube_videos)
 
         logger.info("=" * 50)
         logger.info("Portfolio update complete")

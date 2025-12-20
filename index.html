@@ -188,29 +188,13 @@
                     );
                 }
 
-                // LinkedIn activity
-                // Use placeholder post until API has real data
-                const defaultLinkedInUrl = 'https://www.linkedin.com/feed/update/urn:li:activity:7393985021189042194/';
-                const placeholderText = "Bargain offer. 4.7x ARPU. Increased...";
-
-                if (data.latest_linkedin_post && data.latest_linkedin_post.preview && data.latest_linkedin_post.url) {
-                    activityItems.push(
-                        `Posted <a href="${data.latest_linkedin_post.url}" target="_blank" style="color: #4B0082; text-decoration: none;"><span class="highlight">"${data.latest_linkedin_post.preview}"</span></a> on linkedin`
-                    );
-                } else {
-                    // Fallback to placeholder with meaningful text
-                    activityItems.push(
-                        `Posted <a href="${defaultLinkedInUrl}" target="_blank" style="color: #4B0082; text-decoration: none;"><span class="highlight">"${placeholderText}"</span></a> on linkedin`
-                    );
-                }
-
-                // GitHub activity
-                if (data.github_activity && data.github_activity.repo) {
-                    const repo = data.github_activity.repo;
-                    const repoName = repo.split('/')[1] || repo; // Extract repo name from "owner/repo"
-                    activityItems.push(
-                        `Developed <a href="https://github.com/${repo}" target="_blank" style="color: #4B0082; text-decoration: none;"><span class="highlight">${repoName}</span></a>`
-                    );
+                // GitHub repos - show "Developed:" with 3 repos
+                if (data.github_repos && data.github_repos.length > 0) {
+                    const repoLinks = data.github_repos.map((repo, index) => {
+                        const suffix = index === 0 ? ' (latest)' : '';
+                        return `<a href="${repo.url}" target="_blank" style="color: #4B0082; text-decoration: none;"><span class="highlight">${repo.name}</span></a>${suffix}`;
+                    }).join(', ');
+                    activityItems.push(`Developed: ${repoLinks}`);
                 }
 
                 // Render activity items or show placeholder
