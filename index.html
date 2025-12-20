@@ -222,7 +222,13 @@
 
                 // Render activity items or show placeholder
                 if (activityItems.length > 0) {
-                    activityContainer.innerHTML = activityItems.map(item => `<li>${item}</li>`).join('');
+                    activityContainer.innerHTML = activityItems.map(item => {
+                        if (typeof item === 'object' && item.isRepo) {
+                            // Render as indented sub-item
+                            return `<div class="repo-subitem"><a href="${item.url}" target="_blank" style="color: #4B0082; text-decoration: none;"><span class="highlight">${item.name}</span></a></div>`;
+                        }
+                        return `<li>${item}</li>`;
+                    }).join('');
                 } else {
                     activityContainer.innerHTML = '<li class="loading">No recent activity</li>';
                 }
