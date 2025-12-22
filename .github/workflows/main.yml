@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Trigger Webhook
         # Replaces the URL below with the one from your dashboard
-        run: curl -X POST "http://46.62.211.201:3000/api/deploy/mVds_jODy4Cf0L67ZYO-a"
+        run: curl -X POST "http://46.62.211.201:3000/api/deploy/IG7hLlHfYbM6b5eiPPsvn"
