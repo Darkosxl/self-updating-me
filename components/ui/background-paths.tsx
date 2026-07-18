@@ -140,7 +140,7 @@ export function BackgroundPaths({
                     className="shrink-0 bg-white border border-black shadow-[8px_8px_0_rgba(0,0,0,0.15)]
                     dark:shadow-[8px_8px_0_rgba(255,255,255,0.08)]"
                 >
-                    <AsciiTree className="block h-[26rem] w-72 md:h-[30rem] md:w-80" />
+                    <AsciiTree />
                 </motion.div>
             </div>
         </div>
